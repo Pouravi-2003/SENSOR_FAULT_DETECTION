@@ -17,8 +17,8 @@ from dataclasses import dataclass
 class PredictionPipelineConfig:
     prediction_output_dirname: str = "predictions"
     prediction_file_name:str =  "predicted_file.csv"
-    model_file_path: str = os.path.join(artifact_folder, "model.pkl" )
-    preprocessor_path: str = os.path.join(artifact_folder, "preprocessor.pkl")
+    model_file_path: str = os.path.join('artifact_folder', "model.pkl" )
+    preprocessor_path: str = os.path.join('artifact_folder', "preprocessor.pkl")
     prediction_file_path:str = os.path.join(prediction_output_dirname,prediction_file_name)
 
 
@@ -94,7 +94,7 @@ class PredictionPipeline:
    
         try:
 
-            prediction_column_name : str = TARGET_COLUMN
+            prediction_column_name : str = "TARGET_COLUMN"
             input_dataframe: pd.DataFrame = pd.read_csv(input_dataframe_path)
             
             input_dataframe =  input_dataframe.drop(columns="Unnamed: 0") if "Unnamed: 0" in input_dataframe.columns else input_dataframe

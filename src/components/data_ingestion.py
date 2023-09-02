@@ -15,7 +15,7 @@ from dataclasses import dataclass
 
 @dataclass
 class DataIngestionConfig:
-    artifact_folder: str = os.path.join(artifact_folder)
+    artifact_folder: str = os.path.join('artifact_folder')
     
         
 
@@ -28,7 +28,7 @@ class DataIngestion:
 
     def export_collection_as_dataframe(self,collection_name, db_name):
         try:
-            mongo_client = MongoClient(MONGO_DB_URL)
+            mongo_client = MongoClient("mongodb+srv://pwskills:Pouravi2003@cluster0.qxefg4l.mongodb.net/?retryWrites=true&w=majority")
 
             collection = mongo_client[db_name][collection_name]
 
@@ -62,8 +62,8 @@ class DataIngestion:
             os.makedirs(raw_file_path,exist_ok=True)
 
             sensor_data = self.export_collection_as_dataframe(
-                                                              collection_name= MONGO_COLLECTION_NAME,
-                                                              db_name = MONGO_DATABASE_NAME)
+                                                              collection_name= "waferfault",
+                                                              db_name = "pwskills")
             
 
             logging.info(f"Saving exported data into feature store file path: {raw_file_path}")

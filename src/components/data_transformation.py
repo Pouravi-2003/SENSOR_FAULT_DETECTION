@@ -17,7 +17,7 @@ from dataclasses import dataclass
 
 @dataclass
 class DataTransformationConfig:
-    artifact_dir=os.path.join(artifact_folder)
+    artifact_dir=os.path.join('artifact_folder')
     transformed_train_file_path=os.path.join(artifact_dir, 'train.npy')
     transformed_test_file_path=os.path.join(artifact_dir, 'test.npy') 
     transformed_object_file_path=os.path.join( artifact_dir, 'preprocessor.pkl' )
@@ -54,7 +54,7 @@ class DataTransformation:
         """
         try:
             data = pd.read_csv(feature_store_file_path)
-            data.rename(columns={"Good/Bad": TARGET_COLUMN}, inplace=True)
+            data.rename(columns={"Good/Bad": "TARGET_COLUMN"}, inplace=True)
 
 
             return data
@@ -105,8 +105,8 @@ class DataTransformation:
            
             
             
-            X = dataframe.drop(columns= TARGET_COLUMN)
-            y = np.where(dataframe[TARGET_COLUMN]==-1,0, 1)  #replacing the -1 with 0 for model training
+            X = dataframe.drop(columns= "TARGET_COLUMN")
+            y = np.where(dataframe["TARGET_COLUMN"]==-1,0, 1)  #replacing the -1 with 0 for model training
             
             
             X_train, X_test, y_train, y_test = train_test_split(X,y, test_size = 0.2 )
